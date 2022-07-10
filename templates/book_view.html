@@ -1,0 +1,43 @@
+{% extends 'base1.html' %}
+<html>
+    <head>
+        
+    </head>
+    <body>
+       {% block navbar %}
+       {% for view in view_book  %}
+            <div class="card mb-3" style="max-width: auto; margin:20px;">
+                <div class="row g-0">
+                <div class="col-md-2" style="margin-left:10px;margin-top:5px;margin-bottom:5px;">
+                    <img src="{{view.book_img.url}}" class="img-fluid rounded-start" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                    <h4 class="card-title">{{view.book_name}}</h4>
+                    <p class="card-text">{{view.book_des}}</p>
+                    <h5 class="card-text"><small class="text-muted"><b>Authors: </b>{{view.book_author}}</small></h5>
+                    <h5 class="card-text"><small class="text-muted"><b>Published By: </b>{{view.book_publisher}}In {{book.book_year}}</small></h5>
+                    <h5 class="card-text"><small class="text-muted"><b>Geners: </b>{{view.book_gener}}</small></h5>
+                    <h4><a href="{{view.book_file.url}}">Read Now</a></h4>
+                    </div>
+                </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% for book in all_books  %}
+                    <div class="card" style="width: 14rem;height:25rem; display:inline-block; margin-left:21.5px; margin-bottom:15px;margin-top:15px;">
+                        <img src="{{book.book_img.url}}" class="card-img-top" alt="..." height="220px" width="40px">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size:18px;">{{book.book_name}}</h5>
+                            <p class="card-text">{{book.book_year}}</p>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                             <a href='/book_view/{{book.book_slug}}'>{{book.book_cost}}</a>
+                            </button>
+                        </div>
+                    </div>
+                {% endfor %}
+       {% endblock navbar %}
+       {% block footer %}{% endblock footer %}
+    </body>
+</html>
+

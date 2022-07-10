@@ -1,0 +1,27 @@
+{% extends 'base1.html' %}
+<html>
+    <head></head>
+    <body>
+        {% block navbar %}
+        <div class="bookss">
+            
+                {% for books in xyz %}
+                    <h3>Book-list</h3>
+                    {% for book in books  %}
+                        <div class="card" style="width: 14rem;height:25rem; display:inline-block; margin-left:21.5px; margin-bottom:15px;margin-top:15px;">
+                            <img src="{{book.book_img.url}}" class="card-img-top" alt="..." height="220px" width="40px">
+                            <div class="card-body">
+                                <h5 class="card-title" style="font-size:18px;">{{book.book_name}}</h5>
+                                <p class="card-text">{{book.book_gener}}</p>
+                                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <a href='/book_view/{{book.book_slug}}'>{{book.book_cost}}</a>
+                                </button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}    
+        </div>
+        {% endblock navbar %}
+        {% block footer %}{% endblock footer %}
+    </body>
+</html>
